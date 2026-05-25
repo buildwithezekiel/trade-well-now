@@ -521,22 +521,258 @@ function FinalCTA() {
   );
 }
 
+function AnnouncementBar() {
+  return (
+    <div className="bg-brand text-brand-foreground text-center text-xs font-bold uppercase tracking-widest py-2.5 px-4">
+      <span className="opacity-70">Limited:</span> 30% off your first 3 months on any tier — ends Friday →
+    </div>
+  );
+}
+
+function LivePerformance() {
+  const rows = [
+    { pair: "EUR/USD", side: "BUY", pl: "+1.42%", t: "12s ago" },
+    { pair: "XAU/USD", side: "SELL", pl: "+0.87%", t: "1m ago" },
+    { pair: "GBP/JPY", side: "BUY", pl: "+2.10%", t: "3m ago" },
+    { pair: "USD/CAD", side: "SELL", pl: "−0.34%", t: "6m ago", loss: true },
+    { pair: "AUD/USD", side: "BUY", pl: "+0.55%", t: "9m ago" },
+    { pair: "BTC/USD", side: "BUY", pl: "+3.21%", t: "14m ago" },
+  ];
+  return (
+    <section className="py-24 border-b border-border/60">
+      <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-5 gap-12 items-center">
+        <div className="lg:col-span-2">
+          <p className="text-[11px] font-mono uppercase tracking-widest text-brand mb-4">Live Pool Activity</p>
+          <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">
+            Real trades. <br />Real positions. <br />Public ledger.
+          </h2>
+          <p className="text-muted-foreground mb-8">
+            Every fill from the PAMM master account streams to this page in real time. No cherry-picked screenshots, no curated history — what you see is what runs.
+          </p>
+          <div className="grid grid-cols-3 gap-4">
+            <div className="p-4 rounded-lg bg-surface border border-border">
+              <p className="text-2xl font-mono font-bold text-brand">+18.4%</p>
+              <p className="text-[10px] uppercase tracking-widest text-muted-foreground mt-1">30d</p>
+            </div>
+            <div className="p-4 rounded-lg bg-surface border border-border">
+              <p className="text-2xl font-mono font-bold text-brand">71%</p>
+              <p className="text-[10px] uppercase tracking-widest text-muted-foreground mt-1">Win rate</p>
+            </div>
+            <div className="p-4 rounded-lg bg-surface border border-border">
+              <p className="text-2xl font-mono font-bold">4.8%</p>
+              <p className="text-[10px] uppercase tracking-widest text-muted-foreground mt-1">Max DD</p>
+            </div>
+          </div>
+        </div>
+        <div className="lg:col-span-3 rounded-2xl bg-surface border border-border overflow-hidden">
+          <div className="flex items-center justify-between px-6 py-4 border-b border-border/60">
+            <div className="flex items-center gap-2">
+              <span className="size-2 rounded-full bg-brand animate-pulse" />
+              <span className="text-[11px] font-mono uppercase tracking-widest text-brand">Streaming</span>
+            </div>
+            <span className="text-[11px] font-mono text-muted-foreground">PAMM-MASTER-04</span>
+          </div>
+          <table className="w-full text-sm">
+            <thead className="text-[10px] uppercase tracking-widest text-muted-foreground">
+              <tr className="border-b border-border/60">
+                <th className="text-left px-6 py-3 font-medium">Instrument</th>
+                <th className="text-left px-6 py-3 font-medium">Side</th>
+                <th className="text-right px-6 py-3 font-medium">P/L</th>
+                <th className="text-right px-6 py-3 font-medium">Time</th>
+              </tr>
+            </thead>
+            <tbody className="font-mono">
+              {rows.map((r) => (
+                <tr key={r.pair + r.t} className="border-b border-border/40 last:border-0">
+                  <td className="px-6 py-3 font-bold">{r.pair}</td>
+                  <td className="px-6 py-3">
+                    <span className={`text-[10px] px-2 py-0.5 rounded ${r.side === "BUY" ? "bg-brand/10 text-brand" : "bg-white/5 text-foreground"}`}>{r.side}</span>
+                  </td>
+                  <td className={`px-6 py-3 text-right font-bold ${r.loss ? "text-destructive" : "text-brand"}`}>{r.pl}</td>
+                  <td className="px-6 py-3 text-right text-muted-foreground">{r.t}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Compare() {
+  const rows = [
+    { l: "Best for", ea: "Hands-on traders", pamm: "Passive investors" },
+    { l: "You control trades?", ea: "Full control", pamm: "Fully managed" },
+    { l: "Capital location", ea: "Your broker", pamm: "Your broker" },
+    { l: "Cost model", ea: "Monthly subscription", pamm: "30% of profit only" },
+    { l: "Minimum balance", ea: "$500", pamm: "$1,000" },
+    { l: "Setup time", ea: "~10 minutes", pamm: "~5 minutes" },
+  ];
+  return (
+    <section className="py-24 bg-surface border-y border-border/60">
+      <div className="max-w-5xl mx-auto px-6">
+        <div className="text-center mb-16">
+          <p className="text-[11px] font-mono uppercase tracking-widest text-brand mb-4">Pick Your Path</p>
+          <h2 className="text-4xl md:text-5xl font-bold tracking-tight">EA Licensing vs. PAMM, side by side.</h2>
+        </div>
+        <div className="rounded-2xl border border-border bg-background overflow-hidden">
+          <div className="grid grid-cols-3 border-b border-border/60 bg-surface/60">
+            <div className="p-6 text-[11px] uppercase tracking-widest text-muted-foreground font-bold">Feature</div>
+            <div className="p-6 text-center border-l border-border/60">
+              <p className="text-[11px] uppercase tracking-widest text-brand font-bold mb-1">EA Licensing</p>
+              <p className="text-xs text-muted-foreground">From $49/mo</p>
+            </div>
+            <div className="p-6 text-center border-l border-border/60">
+              <p className="text-[11px] uppercase tracking-widest text-foreground font-bold mb-1">PAMM Strategy</p>
+              <p className="text-xs text-muted-foreground">30% perf. fee</p>
+            </div>
+          </div>
+          {rows.map((r) => (
+            <div key={r.l} className="grid grid-cols-3 border-b border-border/40 last:border-0 text-sm">
+              <div className="p-5 text-muted-foreground">{r.l}</div>
+              <div className="p-5 text-center border-l border-border/40 font-medium">{r.ea}</div>
+              <div className="p-5 text-center border-l border-border/40 font-medium">{r.pamm}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Press() {
+  const names = ["FinanceMag", "AlgoWeekly", "ForexPro", "QuantDaily", "TradersHub"];
+  return (
+    <section className="py-12 border-b border-border/60">
+      <div className="max-w-7xl mx-auto px-6">
+        <p className="text-center text-[10px] font-mono uppercase tracking-widest text-muted-foreground mb-6">As featured in</p>
+        <div className="flex flex-wrap justify-center items-center gap-x-12 gap-y-4">
+          {names.map((n) => (
+            <span key={n} className="text-muted-foreground/60 font-bold tracking-tight italic">{n}</span>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Guarantee() {
+  return (
+    <section className="py-24">
+      <div className="max-w-5xl mx-auto px-6">
+        <div className="rounded-3xl border border-brand/30 bg-gradient-to-br from-brand/10 via-surface to-background p-10 md:p-16 relative overflow-hidden">
+          <div className="absolute -top-20 -right-20 size-64 rounded-full bg-brand/10 blur-3xl pointer-events-none" />
+          <div className="relative grid md:grid-cols-[auto_1fr] gap-8 items-center">
+            <div className="size-24 rounded-2xl bg-brand text-brand-foreground flex items-center justify-center font-bold text-3xl shrink-0">
+              14
+            </div>
+            <div>
+              <p className="text-[11px] font-mono uppercase tracking-widest text-brand mb-3">Zero-Risk Trial</p>
+              <h3 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
+                14 days. Full refund. No questions.
+              </h3>
+              <p className="text-muted-foreground text-lg mb-6 max-w-2xl">
+                Run the EA on a demo or live account for two weeks. If iTrade isn't measurably tighter than your current setup, we refund the subscription. No paperwork.
+              </p>
+              <a href="#pricing" className="inline-flex items-center gap-2 px-6 py-3 bg-brand text-brand-foreground font-bold rounded-lg hover:scale-[1.02] transition-all">
+                Start Free Trial →
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function ObjectionHandler() {
+  const items = [
+    { o: "I already run my own VPS setup.", a: "iTrade replaces the cron-jobs-and-spreadsheets layer. You keep your broker; we replace the operational glue." },
+    { o: "I don't trust black-box algorithms.", a: "Every PAMM trade streams live to this page. EA logic is documented in your dashboard with parameter visibility." },
+    { o: "What if iTrade disappears tomorrow?", a: "Your broker accounts and capital are independent. Worst case: cancel the API permission and continue trading manually." },
+    { o: "I'm not technical enough.", a: "Setup is broker login → click connect → choose risk. No code, no MetaTrader fiddling. Average time-to-live: 7 minutes." },
+  ];
+  return (
+    <section className="py-24 border-y border-border/60">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="text-center mb-16">
+          <p className="text-[11px] font-mono uppercase tracking-widest text-brand mb-4">Honest Answers</p>
+          <h2 className="text-4xl md:text-5xl font-bold tracking-tight">What you're probably thinking.</h2>
+        </div>
+        <div className="grid md:grid-cols-2 gap-6">
+          {items.map((i) => (
+            <div key={i.o} className="p-8 rounded-2xl bg-surface border border-border">
+              <p className="text-xs font-mono uppercase tracking-widest text-muted-foreground mb-3">You:</p>
+              <p className="text-lg font-bold mb-5">"{i.o}"</p>
+              <p className="text-xs font-mono uppercase tracking-widest text-brand mb-3">iTrade:</p>
+              <p className="text-muted-foreground leading-relaxed">{i.a}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function FounderNote() {
+  return (
+    <section className="py-24 bg-surface border-y border-border/60">
+      <div className="max-w-3xl mx-auto px-6 text-center">
+        <p className="text-[11px] font-mono uppercase tracking-widest text-brand mb-6">A Note From the Founder</p>
+        <blockquote className="text-2xl md:text-3xl font-medium leading-relaxed text-foreground/90 mb-8">
+          "We built iTrade because the algo trading space is full of marketing without operational discipline. The EA either works on live capital — or it doesn't ship. That's the only standard."
+        </blockquote>
+        <div className="flex items-center justify-center gap-4">
+          <div className="size-12 rounded-full bg-brand flex items-center justify-center text-brand-foreground font-bold">A</div>
+          <div className="text-left">
+            <p className="font-bold text-sm">Alexei Romanov</p>
+            <p className="text-xs text-muted-foreground">Founder & Head of Quantitative Strategy</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function StickyCTA() {
+  return (
+    <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-40 hidden lg:flex items-center gap-4 px-5 py-3 rounded-full bg-background/90 backdrop-blur-md border border-border shadow-2xl">
+      <span className="flex size-2 rounded-full bg-brand animate-pulse" />
+      <span className="text-xs font-medium text-muted-foreground">
+        <span className="text-foreground font-bold">214 traders</span> activated this week
+      </span>
+      <a href="#pricing" className="px-4 py-1.5 bg-brand text-brand-foreground text-xs font-bold rounded-full hover:bg-brand/90 transition-all uppercase tracking-widest">
+        Get Started
+      </a>
+    </div>
+  );
+}
+
 function LandingPage() {
   return (
     <div className="min-h-screen bg-background text-foreground">
+      <AnnouncementBar />
       <Nav />
       <Hero />
       <StatsBar />
+      <Press />
       <TwoPaths />
+      <Compare />
       <HowItWorks />
       <FeaturePreview />
+      <LivePerformance />
       <Security />
       <Brokers />
       <Pricing />
+      <Guarantee />
       <Testimonials />
+      <ObjectionHandler />
+      <FounderNote />
       <FAQ />
       <FinalCTA />
       <Footer />
+      <StickyCTA />
     </div>
   );
 }
