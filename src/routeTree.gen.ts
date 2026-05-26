@@ -9,8 +9,62 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TermsRouteImport } from './routes/terms'
+import { Route as RiskDisclaimerRouteImport } from './routes/risk-disclaimer'
+import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as PricingRouteImport } from './routes/pricing'
+import { Route as PammRouteImport } from './routes/pamm'
+import { Route as FaqRouteImport } from './routes/faq'
+import { Route as EaLicensingRouteImport } from './routes/ea-licensing'
+import { Route as DocumentationRouteImport } from './routes/documentation'
+import { Route as ContactRouteImport } from './routes/contact'
 import { Route as IndexRouteImport } from './routes/index'
 
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RiskDisclaimerRoute = RiskDisclaimerRouteImport.update({
+  id: '/risk-disclaimer',
+  path: '/risk-disclaimer',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PricingRoute = PricingRouteImport.update({
+  id: '/pricing',
+  path: '/pricing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PammRoute = PammRouteImport.update({
+  id: '/pamm',
+  path: '/pamm',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FaqRoute = FaqRouteImport.update({
+  id: '/faq',
+  path: '/faq',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EaLicensingRoute = EaLicensingRouteImport.update({
+  id: '/ea-licensing',
+  path: '/ea-licensing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DocumentationRoute = DocumentationRouteImport.update({
+  id: '/documentation',
+  path: '/documentation',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -19,28 +73,158 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/contact': typeof ContactRoute
+  '/documentation': typeof DocumentationRoute
+  '/ea-licensing': typeof EaLicensingRoute
+  '/faq': typeof FaqRoute
+  '/pamm': typeof PammRoute
+  '/pricing': typeof PricingRoute
+  '/privacy': typeof PrivacyRoute
+  '/risk-disclaimer': typeof RiskDisclaimerRoute
+  '/terms': typeof TermsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/contact': typeof ContactRoute
+  '/documentation': typeof DocumentationRoute
+  '/ea-licensing': typeof EaLicensingRoute
+  '/faq': typeof FaqRoute
+  '/pamm': typeof PammRoute
+  '/pricing': typeof PricingRoute
+  '/privacy': typeof PrivacyRoute
+  '/risk-disclaimer': typeof RiskDisclaimerRoute
+  '/terms': typeof TermsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/contact': typeof ContactRoute
+  '/documentation': typeof DocumentationRoute
+  '/ea-licensing': typeof EaLicensingRoute
+  '/faq': typeof FaqRoute
+  '/pamm': typeof PammRoute
+  '/pricing': typeof PricingRoute
+  '/privacy': typeof PrivacyRoute
+  '/risk-disclaimer': typeof RiskDisclaimerRoute
+  '/terms': typeof TermsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/contact'
+    | '/documentation'
+    | '/ea-licensing'
+    | '/faq'
+    | '/pamm'
+    | '/pricing'
+    | '/privacy'
+    | '/risk-disclaimer'
+    | '/terms'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/contact'
+    | '/documentation'
+    | '/ea-licensing'
+    | '/faq'
+    | '/pamm'
+    | '/pricing'
+    | '/privacy'
+    | '/risk-disclaimer'
+    | '/terms'
+  id:
+    | '__root__'
+    | '/'
+    | '/contact'
+    | '/documentation'
+    | '/ea-licensing'
+    | '/faq'
+    | '/pamm'
+    | '/pricing'
+    | '/privacy'
+    | '/risk-disclaimer'
+    | '/terms'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ContactRoute: typeof ContactRoute
+  DocumentationRoute: typeof DocumentationRoute
+  EaLicensingRoute: typeof EaLicensingRoute
+  FaqRoute: typeof FaqRoute
+  PammRoute: typeof PammRoute
+  PricingRoute: typeof PricingRoute
+  PrivacyRoute: typeof PrivacyRoute
+  RiskDisclaimerRoute: typeof RiskDisclaimerRoute
+  TermsRoute: typeof TermsRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/risk-disclaimer': {
+      id: '/risk-disclaimer'
+      path: '/risk-disclaimer'
+      fullPath: '/risk-disclaimer'
+      preLoaderRoute: typeof RiskDisclaimerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pricing': {
+      id: '/pricing'
+      path: '/pricing'
+      fullPath: '/pricing'
+      preLoaderRoute: typeof PricingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pamm': {
+      id: '/pamm'
+      path: '/pamm'
+      fullPath: '/pamm'
+      preLoaderRoute: typeof PammRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/faq': {
+      id: '/faq'
+      path: '/faq'
+      fullPath: '/faq'
+      preLoaderRoute: typeof FaqRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ea-licensing': {
+      id: '/ea-licensing'
+      path: '/ea-licensing'
+      fullPath: '/ea-licensing'
+      preLoaderRoute: typeof EaLicensingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/documentation': {
+      id: '/documentation'
+      path: '/documentation'
+      fullPath: '/documentation'
+      preLoaderRoute: typeof DocumentationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -53,6 +237,15 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ContactRoute: ContactRoute,
+  DocumentationRoute: DocumentationRoute,
+  EaLicensingRoute: EaLicensingRoute,
+  FaqRoute: FaqRoute,
+  PammRoute: PammRoute,
+  PricingRoute: PricingRoute,
+  PrivacyRoute: PrivacyRoute,
+  RiskDisclaimerRoute: RiskDisclaimerRoute,
+  TermsRoute: TermsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
