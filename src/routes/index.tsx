@@ -81,12 +81,12 @@ function ExploreLink({ to, label = "Explore" }: { to: string; label?: string }) 
 
 function Logo() {
   return (
-    <div className="flex items-center gap-2.5">
-      <div className="size-7 bg-foreground flex items-center justify-center">
-        <div className="size-2.5 bg-background rotate-45" />
-      </div>
-      <span className="text-base font-semibold tracking-tight">iTrade</span>
-    </div>
+    <span
+      className="text-2xl tracking-tight text-foreground"
+      style={{ fontFamily: '"Instrument Serif", serif', fontStyle: "italic" }}
+    >
+      iTrade
+    </span>
   );
 }
 
@@ -97,18 +97,24 @@ function Nav() {
         <Link to="/">
           <Logo />
         </Link>
-        <div className="hidden md:flex items-center gap-8">
-          <Link to="/ea-licensing" className="text-sm text-muted-foreground hover:text-foreground transition-colors">EA Licensing</Link>
-          <Link to="/pamm" className="text-sm text-muted-foreground hover:text-foreground transition-colors">PAMM</Link>
-          <Link to="/pricing" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Pricing</Link>
-          <Link to="/documentation" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Docs</Link>
-          <Link to="/contact" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Contact</Link>
+        <div className="hidden md:flex items-center gap-9">
+          <Link to="/" className="text-sm text-foreground hover:text-foreground transition-colors">Home</Link>
+          <Link to="/ea-licensing" className="text-sm text-muted-foreground hover:text-foreground transition-colors">About</Link>
+          <Link to="/pamm" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Features</Link>
+          <Link to="/documentation" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Resources</Link>
         </div>
-        <div className="flex items-center gap-3">
-          <a href="#" className="hidden sm:inline text-sm text-muted-foreground hover:text-foreground transition-colors">Log in</a>
-          <a href="#" className="inline-flex items-center gap-1.5 rounded-full bg-foreground px-4 py-2 text-sm font-medium text-background hover:bg-foreground/90 transition-colors">
+        <div className="flex items-center gap-2">
+          <a
+            href="#"
+            className="hidden sm:inline-flex items-center rounded-full border border-border bg-background px-5 py-2 text-sm font-medium text-foreground hover:bg-secondary transition-colors"
+          >
+            Login
+          </a>
+          <a
+            href="#"
+            className="inline-flex items-center rounded-full bg-foreground px-5 py-2 text-sm font-medium text-background hover:bg-foreground/90 transition-colors"
+          >
             Start
-            <ArrowRight className="size-3.5" />
           </a>
         </div>
       </nav>
@@ -122,25 +128,44 @@ function Nav() {
 
 function Hero() {
   return (
-    <section className="border-b border-border/70">
-      <div className="mx-auto max-w-[1280px] px-6 pt-20 pb-24 md:pt-32 md:pb-36">
+    <section className="bg-background">
+      <div className="mx-auto max-w-[1280px] px-6 pt-10 pb-16 md:pt-14 md:pb-24">
         <Reveal>
-          <Eyebrow>iTrade · Automated MT4 / MT5</Eyebrow>
-        </Reveal>
-        <Reveal delay={80}>
-          <h1 className="mt-6 font-display text-5xl md:text-7xl lg:text-[112px] leading-[0.95] tracking-tight text-foreground max-w-[14ch]">
-            Command your strategies, <em className="text-brand not-italic">never your funds.</em>
-          </h1>
-        </Reveal>
-        <Reveal delay={160}>
-          <div className="mt-10 grid gap-10 md:grid-cols-2 md:items-end">
-            <p className="max-w-md text-base md:text-lg leading-relaxed text-muted-foreground">
-              iTrade is a non-custodial command center for serious retail traders. Connect your
-              MT4 or MT5 account, deploy strategies, monitor risk — all from one screen.
-            </p>
-            <div className="flex flex-wrap items-center gap-3 md:justify-end">
-              <PrimaryBtn to="/pricing">Start trading</PrimaryBtn>
-              <GhostBtn to="/ea-licensing">See how it works</GhostBtn>
+          <div className="overflow-hidden rounded-md border border-border bg-card">
+            <div className="grid md:grid-cols-2">
+              {/* Left — copy */}
+              <div className="flex flex-col justify-center p-10 md:p-16 lg:p-20">
+                <Reveal delay={80}>
+                  <h1 className="font-display text-5xl md:text-6xl lg:text-7xl leading-[1] tracking-tight text-foreground max-w-[12ch]">
+                    Trade smarter, <span className="text-brand">not harder.</span>
+                  </h1>
+                </Reveal>
+                <Reveal delay={180}>
+                  <p className="mt-8 max-w-md text-base leading-relaxed text-muted-foreground">
+                    iTrade puts algorithmic trading within reach. Connect your MT4 or MT5 account,
+                    build your strategies, and watch them execute with precision from a single
+                    command center.
+                  </p>
+                </Reveal>
+                <Reveal delay={260}>
+                  <div className="mt-10 flex flex-wrap items-center gap-3">
+                    <PrimaryBtn to="/pricing">Start</PrimaryBtn>
+                    <GhostBtn to="/documentation">Learn</GhostBtn>
+                  </div>
+                </Reveal>
+              </div>
+
+              {/* Right — image */}
+              <div className="relative min-h-[320px] md:min-h-[560px] overflow-hidden bg-secondary">
+                <img
+                  src={dashboardImg}
+                  alt="iTrade command center dashboard preview"
+                  width={1280}
+                  height={1024}
+                  className="absolute inset-0 h-full w-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-tr from-foreground/15 via-transparent to-transparent" />
+              </div>
             </div>
           </div>
         </Reveal>
@@ -148,6 +173,8 @@ function Hero() {
     </section>
   );
 }
+
+
 
 /* ----------------------------------------------------------------- *
  * Core — three cards
