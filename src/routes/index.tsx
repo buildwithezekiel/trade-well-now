@@ -567,68 +567,13 @@ function CTA() {
 }
 
 /* ----------------------------------------------------------------- *
- * Footer
- * ----------------------------------------------------------------- */
-
-function Footer() {
-  const col = (title: string, links: { to: string; label: string }[]) => (
-    <div>
-      <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-muted-foreground">{title}</p>
-      <ul className="mt-5 space-y-3">
-        {links.map((l) => (
-          <li key={l.to}>
-            <Link to={l.to} className="text-sm text-foreground hover:text-brand transition-colors">
-              {l.label}
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-
-  return (
-    <footer className="bg-background">
-      <div className="mx-auto max-w-[1280px] px-6 py-20 grid gap-12 md:grid-cols-5">
-        <div className="md:col-span-2">
-          <Logo />
-          <p className="mt-5 max-w-xs text-sm text-muted-foreground leading-relaxed">
-            A non-custodial command center for automated MT4 / MT5 trading.
-          </p>
-        </div>
-        {col("Product", [
-          { to: "/ea-licensing", label: "EA Licensing" },
-          { to: "/pamm", label: "PAMM Module" },
-          { to: "/pricing", label: "Pricing" },
-        ])}
-        {col("Support", [
-          { to: "/documentation", label: "Documentation" },
-          { to: "/faq", label: "FAQ" },
-          { to: "/contact", label: "Contact" },
-        ])}
-        {col("Legal", [
-          { to: "/risk-disclaimer", label: "Risk Disclaimer" },
-          { to: "/privacy", label: "Privacy Policy" },
-          { to: "/terms", label: "Terms of Service" },
-        ])}
-      </div>
-      <div className="border-t border-border/70">
-        <div className="mx-auto flex max-w-[1280px] flex-col gap-2 px-6 py-6 text-xs text-muted-foreground sm:flex-row sm:justify-between">
-          <p>© {new Date().getFullYear()} iTrade. All rights reserved.</p>
-          <p>iTrade does not hold client funds and does not execute discretionary trades.</p>
-        </div>
-      </div>
-    </footer>
-  );
-}
-
-/* ----------------------------------------------------------------- *
  * Page
  * ----------------------------------------------------------------- */
 
 function LandingPage() {
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <Nav />
+      <SiteHeader />
       <main>
         <Hero />
         <Core />
@@ -638,7 +583,8 @@ function LandingPage() {
         <Voices />
         <CTA />
       </main>
-      <Footer />
+      <SiteFooter />
     </div>
   );
 }
+
