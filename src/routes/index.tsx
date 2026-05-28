@@ -2,10 +2,13 @@ import { Link } from "@tanstack/react-router";
 import { createFileRoute } from "@tanstack/react-router";
 import { ArrowUpRight, ArrowRight } from "lucide-react";
 import { Reveal } from "@/components/site/Reveal";
+import { SiteHeader } from "@/components/site/SiteHeader";
+import { SiteFooter } from "@/components/site/SiteFooter";
 import dashboardImg from "@/assets/dashboard.jpg";
 import networkImg from "@/assets/network.jpg";
 import editorialImg from "@/assets/editorial.jpg";
 import precisionImg from "@/assets/precision.jpg";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
