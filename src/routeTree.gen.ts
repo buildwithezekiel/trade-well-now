@@ -20,6 +20,7 @@ import { Route as ForgotPasswordRouteImport } from './routes/forgot-password'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as EaLicensingRouteImport } from './routes/ea-licensing'
 import { Route as DocumentationRouteImport } from './routes/documentation'
+import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AuthCallbackRouteImport } from './routes/auth-callback'
 import { Route as IndexRouteImport } from './routes/index'
@@ -79,6 +80,11 @@ const DocumentationRoute = DocumentationRouteImport.update({
   path: '/documentation',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DashboardRoute = DashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
@@ -99,6 +105,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/auth-callback': typeof AuthCallbackRoute
   '/contact': typeof ContactRoute
+  '/dashboard': typeof DashboardRoute
   '/documentation': typeof DocumentationRoute
   '/ea-licensing': typeof EaLicensingRoute
   '/faq': typeof FaqRoute
@@ -115,6 +122,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth-callback': typeof AuthCallbackRoute
   '/contact': typeof ContactRoute
+  '/dashboard': typeof DashboardRoute
   '/documentation': typeof DocumentationRoute
   '/ea-licensing': typeof EaLicensingRoute
   '/faq': typeof FaqRoute
@@ -132,6 +140,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/auth-callback': typeof AuthCallbackRoute
   '/contact': typeof ContactRoute
+  '/dashboard': typeof DashboardRoute
   '/documentation': typeof DocumentationRoute
   '/ea-licensing': typeof EaLicensingRoute
   '/faq': typeof FaqRoute
@@ -150,6 +159,7 @@ export interface FileRouteTypes {
     | '/'
     | '/auth-callback'
     | '/contact'
+    | '/dashboard'
     | '/documentation'
     | '/ea-licensing'
     | '/faq'
@@ -166,6 +176,7 @@ export interface FileRouteTypes {
     | '/'
     | '/auth-callback'
     | '/contact'
+    | '/dashboard'
     | '/documentation'
     | '/ea-licensing'
     | '/faq'
@@ -182,6 +193,7 @@ export interface FileRouteTypes {
     | '/'
     | '/auth-callback'
     | '/contact'
+    | '/dashboard'
     | '/documentation'
     | '/ea-licensing'
     | '/faq'
@@ -199,6 +211,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AuthCallbackRoute: typeof AuthCallbackRoute
   ContactRoute: typeof ContactRoute
+  DashboardRoute: typeof DashboardRoute
   DocumentationRoute: typeof DocumentationRoute
   EaLicensingRoute: typeof EaLicensingRoute
   FaqRoute: typeof FaqRoute
@@ -291,6 +304,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DocumentationRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/dashboard': {
+      id: '/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof DashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/contact': {
       id: '/contact'
       path: '/contact'
@@ -319,6 +339,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AuthCallbackRoute: AuthCallbackRoute,
   ContactRoute: ContactRoute,
+  DashboardRoute: DashboardRoute,
   DocumentationRoute: DocumentationRoute,
   EaLicensingRoute: EaLicensingRoute,
   FaqRoute: FaqRoute,
