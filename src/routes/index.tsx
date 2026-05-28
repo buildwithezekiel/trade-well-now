@@ -2,10 +2,13 @@ import { Link } from "@tanstack/react-router";
 import { createFileRoute } from "@tanstack/react-router";
 import { ArrowUpRight, ArrowRight } from "lucide-react";
 import { Reveal } from "@/components/site/Reveal";
+import { SiteHeader } from "@/components/site/SiteHeader";
+import { SiteFooter } from "@/components/site/SiteFooter";
 import dashboardImg from "@/assets/dashboard.jpg";
 import networkImg from "@/assets/network.jpg";
 import editorialImg from "@/assets/editorial.jpg";
 import precisionImg from "@/assets/precision.jpg";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -76,87 +79,62 @@ function ExploreLink({ to, label = "Explore" }: { to: string; label?: string }) 
 }
 
 /* ----------------------------------------------------------------- *
- * Nav
- * ----------------------------------------------------------------- */
-
-function Logo() {
-  return (
-    <span
-      className="text-2xl tracking-tight text-foreground"
-      style={{ fontFamily: '"Instrument Serif", serif', fontStyle: "italic" }}
-    >
-      iTrade
-    </span>
-  );
-}
-
-function Nav() {
-  return (
-    <header className="sticky top-0 z-50 border-b border-border/70 bg-background/85 backdrop-blur-md">
-      <nav className="mx-auto flex h-16 max-w-[1280px] items-center justify-between px-6">
-        <Link to="/">
-          <Logo />
-        </Link>
-        <div className="hidden md:flex items-center gap-9">
-          <Link to="/" className="text-sm text-foreground hover:text-foreground transition-colors">Home</Link>
-          <Link to="/ea-licensing" className="text-sm text-muted-foreground hover:text-foreground transition-colors">About</Link>
-          <Link to="/pamm" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Features</Link>
-          <Link to="/documentation" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Resources</Link>
-        </div>
-        <div className="flex items-center gap-2">
-          <a
-            href="#"
-            className="hidden sm:inline-flex items-center rounded-full border border-border bg-background px-5 py-2 text-sm font-medium text-foreground hover:bg-secondary transition-colors"
-          >
-            Login
-          </a>
-          <a
-            href="#"
-            className="inline-flex items-center rounded-full bg-foreground px-5 py-2 text-sm font-medium text-background hover:bg-foreground/90 transition-colors"
-          >
-            Start
-          </a>
-        </div>
-      </nav>
-    </header>
-  );
-}
-
-/* ----------------------------------------------------------------- *
- * Hero
+ * Hero — wide editorial split
  * ----------------------------------------------------------------- */
 
 function Hero() {
   return (
     <section className="bg-background">
-      <div className="mx-auto max-w-[1280px] px-6 pt-10 pb-16 md:pt-14 md:pb-24">
+      <div className="mx-auto max-w-[1440px] px-6 lg:px-10 pt-10 pb-16 md:pt-14 md:pb-24">
         <Reveal>
-          <div className="overflow-hidden rounded-md border border-border bg-card">
-            <div className="grid md:grid-cols-2">
+          <div className="overflow-hidden rounded-3xl border border-border bg-card">
+            <div className="grid lg:grid-cols-[1.05fr_1fr]">
               {/* Left — copy */}
-              <div className="flex flex-col justify-center p-10 md:p-16 lg:p-20">
+              <div className="flex flex-col justify-center p-10 md:p-16 lg:p-20 xl:p-24">
                 <Reveal delay={80}>
-                  <h1 className="font-display text-5xl md:text-6xl lg:text-7xl leading-[1] tracking-tight text-foreground max-w-[12ch]">
-                    Trade smarter, <span className="text-brand">not harder.</span>
-                  </h1>
-                </Reveal>
-                <Reveal delay={180}>
-                  <p className="mt-8 max-w-md text-base leading-relaxed text-muted-foreground">
-                    iTrade puts algorithmic trading within reach. Connect your MT4 or MT5 account,
-                    build your strategies, and watch them execute with precision from a single
-                    command center.
+                  <p className="mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-brand-soft px-3 py-1 text-[11px] font-medium uppercase tracking-[0.18em] text-brand w-fit">
+                    <span className="size-1.5 rounded-full bg-brand" /> Non-custodial · MT4 &amp; MT5
                   </p>
                 </Reveal>
-                <Reveal delay={260}>
+                <Reveal delay={140}>
+                  <h1 className="font-display text-6xl md:text-7xl lg:text-[5.5rem] xl:text-[6.5rem] leading-[0.95] tracking-tight text-foreground">
+                    Trade smarter,<br />
+                    <span className="text-brand italic">not harder.</span>
+                  </h1>
+                </Reveal>
+                <Reveal delay={220}>
+                  <p className="mt-8 max-w-lg text-base md:text-lg leading-relaxed text-muted-foreground">
+                    iTrade puts algorithmic trading within reach. Connect your MT4 or MT5 account,
+                    deploy strategies, and watch them execute with precision from a single
+                    command center — without ever surrendering your funds.
+                  </p>
+                </Reveal>
+                <Reveal delay={300}>
                   <div className="mt-10 flex flex-wrap items-center gap-3">
-                    <PrimaryBtn to="/pricing">Start</PrimaryBtn>
-                    <GhostBtn to="/documentation">Learn</GhostBtn>
+                    <PrimaryBtn to="/signup">Start free</PrimaryBtn>
+                    <GhostBtn to="/dashboard">View dashboard</GhostBtn>
+                  </div>
+                </Reveal>
+                <Reveal delay={380}>
+                  <div className="mt-12 grid grid-cols-3 gap-6 max-w-md border-t border-border pt-8">
+                    <div>
+                      <p className="font-display text-3xl text-foreground">50K+</p>
+                      <p className="mt-1 text-[11px] uppercase tracking-[0.16em] text-muted-foreground">Trades / day</p>
+                    </div>
+                    <div>
+                      <p className="font-display text-3xl text-foreground">99.9%</p>
+                      <p className="mt-1 text-[11px] uppercase tracking-[0.16em] text-muted-foreground">Uptime</p>
+                    </div>
+                    <div>
+                      <p className="font-display text-3xl text-foreground">12+</p>
+                      <p className="mt-1 text-[11px] uppercase tracking-[0.16em] text-muted-foreground">Brokers</p>
+                    </div>
                   </div>
                 </Reveal>
               </div>
 
               {/* Right — image */}
-              <div className="relative min-h-[320px] md:min-h-[560px] overflow-hidden bg-secondary">
+              <div className="relative min-h-[360px] lg:min-h-[680px] overflow-hidden bg-secondary">
                 <img
                   src={dashboardImg}
                   alt="iTrade command center dashboard preview"
@@ -164,7 +142,7 @@ function Hero() {
                   height={1024}
                   className="absolute inset-0 h-full w-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-tr from-foreground/15 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-tr from-foreground/20 via-transparent to-transparent" />
               </div>
             </div>
           </div>
@@ -173,6 +151,7 @@ function Hero() {
     </section>
   );
 }
+
 
 
 
@@ -588,68 +567,13 @@ function CTA() {
 }
 
 /* ----------------------------------------------------------------- *
- * Footer
- * ----------------------------------------------------------------- */
-
-function Footer() {
-  const col = (title: string, links: { to: string; label: string }[]) => (
-    <div>
-      <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-muted-foreground">{title}</p>
-      <ul className="mt-5 space-y-3">
-        {links.map((l) => (
-          <li key={l.to}>
-            <Link to={l.to} className="text-sm text-foreground hover:text-brand transition-colors">
-              {l.label}
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-
-  return (
-    <footer className="bg-background">
-      <div className="mx-auto max-w-[1280px] px-6 py-20 grid gap-12 md:grid-cols-5">
-        <div className="md:col-span-2">
-          <Logo />
-          <p className="mt-5 max-w-xs text-sm text-muted-foreground leading-relaxed">
-            A non-custodial command center for automated MT4 / MT5 trading.
-          </p>
-        </div>
-        {col("Product", [
-          { to: "/ea-licensing", label: "EA Licensing" },
-          { to: "/pamm", label: "PAMM Module" },
-          { to: "/pricing", label: "Pricing" },
-        ])}
-        {col("Support", [
-          { to: "/documentation", label: "Documentation" },
-          { to: "/faq", label: "FAQ" },
-          { to: "/contact", label: "Contact" },
-        ])}
-        {col("Legal", [
-          { to: "/risk-disclaimer", label: "Risk Disclaimer" },
-          { to: "/privacy", label: "Privacy Policy" },
-          { to: "/terms", label: "Terms of Service" },
-        ])}
-      </div>
-      <div className="border-t border-border/70">
-        <div className="mx-auto flex max-w-[1280px] flex-col gap-2 px-6 py-6 text-xs text-muted-foreground sm:flex-row sm:justify-between">
-          <p>© {new Date().getFullYear()} iTrade. All rights reserved.</p>
-          <p>iTrade does not hold client funds and does not execute discretionary trades.</p>
-        </div>
-      </div>
-    </footer>
-  );
-}
-
-/* ----------------------------------------------------------------- *
  * Page
  * ----------------------------------------------------------------- */
 
 function LandingPage() {
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <Nav />
+      <SiteHeader />
       <main>
         <Hero />
         <Core />
@@ -659,7 +583,8 @@ function LandingPage() {
         <Voices />
         <CTA />
       </main>
-      <Footer />
+      <SiteFooter />
     </div>
   );
 }
+
