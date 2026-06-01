@@ -1,21 +1,12 @@
 import { Link } from "@tanstack/react-router";
-
-function Logo() {
-  return (
-    <span
-      className="text-2xl tracking-tight text-foreground"
-      style={{ fontFamily: '"Instrument Serif", serif', fontStyle: "italic" }}
-    >
-      iTrade
-    </span>
-  );
-}
+import { Logo } from "./Logo";
 
 const product = [
   { to: "/ea-licensing", label: "EA Licensing" },
   { to: "/pamm", label: "PAMM Module" },
   { to: "/pricing", label: "Pricing" },
   { to: "/dashboard", label: "Dashboard" },
+  { to: "/onboarding", label: "EA Onboarding" },
 ];
 const support = [
   { to: "/documentation", label: "Documentation" },
@@ -26,6 +17,7 @@ const account = [
   { to: "/login", label: "Login" },
   { to: "/signup", label: "Sign up" },
   { to: "/forgot-password", label: "Forgot password" },
+  { to: "/admin", label: "Admin" },
 ];
 const legal = [
   { to: "/risk-disclaimer", label: "Risk Disclaimer" },
@@ -57,10 +49,13 @@ export function SiteFooter() {
     <footer className="border-t border-border/70 bg-background">
       <div className="mx-auto grid max-w-[1440px] gap-12 px-6 lg:px-10 py-20 md:grid-cols-6">
         <div className="md:col-span-2">
-          <Logo />
+          <Logo className="h-9 w-auto" />
           <p className="mt-5 max-w-xs text-sm leading-relaxed text-muted-foreground">
-            A non-custodial command center for automated MT4 / MT5 trading.
+            A non-custodial command center for automated MT4 / MT5 trading. Funds stay with your broker — always.
           </p>
+          <div className="mt-6 inline-flex items-center gap-2 rounded-full border border-border bg-brand-soft px-3 py-1 text-[11px] font-medium uppercase tracking-[0.18em] text-brand">
+            <span className="size-1.5 rounded-full bg-brand-gradient" /> Non-custodial
+          </div>
         </div>
         <Col title="Product" links={product} />
         <Col title="Support" links={support} />

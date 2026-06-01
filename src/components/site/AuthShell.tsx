@@ -1,18 +1,7 @@
 import type { ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
 import { Reveal } from "@/components/site/Reveal";
-
-function Logo() {
-  return (
-    <Link
-      to="/"
-      className="text-3xl tracking-tight text-foreground"
-      style={{ fontFamily: '"Instrument Serif", serif', fontStyle: "italic" }}
-    >
-      iTrade
-    </Link>
-  );
-}
+import { Logo } from "@/components/site/Logo";
 
 export function AuthShell({
   eyebrow,
@@ -31,7 +20,7 @@ export function AuthShell({
     <div className="min-h-screen bg-surface text-foreground">
       <div className="mx-auto flex min-h-screen max-w-[1440px] flex-col px-6 lg:px-10 py-8">
         <div className="flex items-center justify-between">
-          <Logo />
+          <Logo className="h-8 w-auto" />
           <Link
             to="/"
             className="text-sm text-muted-foreground hover:text-foreground transition-colors"
