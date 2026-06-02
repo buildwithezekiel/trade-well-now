@@ -43,34 +43,33 @@
 
 :root {
   --radius: 1rem;
-  /* Light editorial canvas, brand teal pulled from logo (green→teal→blue) */
-  --background: oklch(0.98 0.005 200);
-  --foreground: oklch(0.18 0.02 220);
-  --ink: oklch(0.14 0.02 220);
-  --surface: oklch(0.96 0.008 200);
+  /* Editorial canvas with real ink + punchier brand pulled from logo (green→teal→blue) */
+  --background: oklch(0.985 0.004 200);
+  --foreground: oklch(0.14 0.02 230);
+  --ink: oklch(0.10 0.02 230);
+  --surface: oklch(0.955 0.01 200);
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.18 0.02 220);
+  --card-foreground: oklch(0.14 0.02 230);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.18 0.02 220);
-  /* brand = teal, sits between logo's green and blue */
-  --primary: oklch(0.58 0.13 190);
+  --popover-foreground: oklch(0.14 0.02 230);
+  --primary: oklch(0.52 0.16 192);
   --primary-foreground: oklch(0.99 0.005 200);
-  --brand: oklch(0.58 0.13 190);
+  --brand: oklch(0.52 0.16 192);
   --brand-foreground: oklch(0.99 0.005 200);
-  --brand-soft: oklch(0.94 0.04 190);
-  --brand-green: oklch(0.62 0.16 155);
-  --brand-blue: oklch(0.58 0.16 230);
-  --secondary: oklch(0.94 0.012 200);
-  --secondary-foreground: oklch(0.18 0.02 220);
-  --muted: oklch(0.95 0.008 200);
-  --muted-foreground: oklch(0.46 0.02 215);
-  --accent: oklch(0.93 0.05 195);
-  --accent-foreground: oklch(0.22 0.05 215);
-  --destructive: oklch(0.58 0.22 25);
+  --brand-soft: oklch(0.93 0.06 192);
+  --brand-green: oklch(0.58 0.18 152);
+  --brand-blue: oklch(0.54 0.18 232);
+  --secondary: oklch(0.93 0.014 200);
+  --secondary-foreground: oklch(0.14 0.02 230);
+  --muted: oklch(0.94 0.01 200);
+  --muted-foreground: oklch(0.38 0.025 220);
+  --accent: oklch(0.91 0.06 195);
+  --accent-foreground: oklch(0.18 0.05 220);
+  --destructive: oklch(0.55 0.23 27);
   --destructive-foreground: oklch(1 0 0);
-  --border: oklch(0.88 0.012 200);
-  --input: oklch(0.88 0.012 200);
-  --ring: oklch(0.58 0.13 190);
+  --border: oklch(0.82 0.018 210);
+  --input: oklch(0.82 0.018 210);
+  --ring: oklch(0.52 0.16 192);
 }
 
 @layer base {
