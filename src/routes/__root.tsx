@@ -4,12 +4,22 @@ import {
   Link,
   createRootRouteWithContext,
   useRouter,
+  useRouterState,
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
 import { Toaster } from "@/components/ui/sonner";
 
 import appCss from "../styles.css?url";
+
+function PageTransition({ children }: { children: React.ReactNode }) {
+  const { location } = useRouterState();
+  return (
+    <div key={location.pathname} className="animate-page-in">
+      {children}
+    </div>
+  );
+}
 
 function NotFoundComponent() {
   return (
@@ -121,7 +131,9 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <Outlet />
+      <PageTransition>
+        <Outlet />
+      </PageTransition>
       <Toaster position="bottom-right" />
     </QueryClientProvider>
   );
