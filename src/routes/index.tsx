@@ -475,30 +475,46 @@ function Proof() {
  * ----------------------------------------------------------------- */
 
 const voices = [
-  {
-    quote:
-      "iTrade gave me back my time. I stopped managing spreadsheets and started managing strategies that actually work.",
-    name: "Marcus Chen",
-    role: "Algorithmic trader",
-  },
-  {
-    quote:
-      "The transparency here is different. I see exactly what my algorithms do, and I trust the system because I built it.",
-    name: "Sarah Mitchell",
-    role: "Portfolio manager",
-  },
-  {
-    quote:
-      "No complications, no middleman, no surprises. Just clean automation that works the way I need it to work.",
-    name: "James Rodriguez",
-    role: "Independent trader",
-  },
+  { quote: "iTrade gave me back my time. I stopped managing spreadsheets and started managing strategies that actually work.", name: "Marcus Chen", role: "Algorithmic trader" },
+  { quote: "The transparency here is different. I see exactly what my algorithms do, and I trust the system because I built it.", name: "Sarah Mitchell", role: "Portfolio manager" },
+  { quote: "No complications, no middleman, no surprises. Just clean automation that works the way I need it to work.", name: "James Rodriguez", role: "Independent trader" },
+  { quote: "Connecting four broker accounts took me a single afternoon. The license model just made sense.", name: "Amaka Obi", role: "Prop firm trader" },
+  { quote: "Risk presets per account — finally. My grid EA finally stopped blowing the small ones.", name: "Leo Park", role: "Retail systematic" },
+  { quote: "PAMM performance reporting beats the broker's own dashboard. That alone earned my subscription.", name: "Nadia Haddad", role: "PAMM investor" },
+  { quote: "Referral payouts hit my wallet the same week. Nothing buried, nothing delayed.", name: "Kwame Asante", role: "Community lead" },
+  { quote: "The non-custodial part isn't a marketing line — funds genuinely never leave my broker.", name: "Elena Petrova", role: "FX day trader" },
 ];
 
-function Voices() {
+function Quote({ v }: { v: (typeof voices)[number] }) {
   return (
-    <section className="border-b border-border/70 bg-background">
-      <div className="mx-auto max-w-[1280px] px-6 py-24 md:py-32">
+    <figure className="flex h-full w-[320px] md:w-[380px] shrink-0 flex-col rounded-md border border-border bg-card p-7">
+      <div className="flex gap-0.5 text-brand" aria-label="5 stars">
+        {Array.from({ length: 5 }).map((_, k) => (
+          <svg key={k} viewBox="0 0 20 20" className="size-3.5 fill-current" aria-hidden>
+            <path d="M10 1.5l2.7 5.5 6.1.9-4.4 4.3 1 6.1L10 15.4 4.6 18.3l1-6.1L1.2 7.9l6.1-.9L10 1.5z" />
+          </svg>
+        ))}
+      </div>
+      <blockquote className="mt-4 text-[15px] leading-relaxed text-foreground line-clamp-5">
+        &ldquo;{v.quote}&rdquo;
+      </blockquote>
+      <figcaption className="mt-auto flex items-center gap-3 pt-6">
+        <div className="size-9 rounded-full bg-secondary border border-border" />
+        <div>
+          <p className="text-sm font-medium text-foreground">{v.name}</p>
+          <p className="text-xs text-muted-foreground">{v.role}</p>
+        </div>
+      </figcaption>
+    </figure>
+  );
+}
+
+function Voices() {
+  const rowA = [...voices, ...voices];
+  const rowB = [...voices.slice().reverse(), ...voices.slice().reverse()];
+  return (
+    <section className="border-b border-border/70 bg-background overflow-hidden">
+      <div className="mx-auto max-w-[1280px] px-6 pt-24 md:pt-32">
         <Reveal className="text-center">
           <Eyebrow>Voices</Eyebrow>
           <h2 className="mt-4 font-display text-4xl md:text-6xl leading-[1] tracking-tight">
@@ -506,31 +522,13 @@ function Voices() {
           </h2>
           <p className="mt-5 text-sm md:text-base text-muted-foreground">What traders say.</p>
         </Reveal>
-
-        <div className="mt-16 grid gap-5 md:grid-cols-3">
-          {voices.map((v, i) => (
-            <Reveal key={v.name} delay={i * 90}>
-              <figure className="flex h-full flex-col rounded-md border border-border bg-card p-8">
-                <div className="flex gap-0.5 text-brand" aria-label="5 stars">
-                  {Array.from({ length: 5 }).map((_, k) => (
-                    <svg key={k} viewBox="0 0 20 20" className="size-4 fill-current" aria-hidden>
-                      <path d="M10 1.5l2.7 5.5 6.1.9-4.4 4.3 1 6.1L10 15.4 4.6 18.3l1-6.1L1.2 7.9l6.1-.9L10 1.5z" />
-                    </svg>
-                  ))}
-                </div>
-                <blockquote className="mt-6 text-base leading-relaxed text-foreground">
-                  “{v.quote}”
-                </blockquote>
-                <figcaption className="mt-auto flex items-center gap-3 pt-8">
-                  <div className="size-9 rounded-full bg-secondary border border-border" />
-                  <div>
-                    <p className="text-sm font-medium text-foreground">{v.name}</p>
-                    <p className="text-xs text-muted-foreground">{v.role}</p>
-                  </div>
-                </figcaption>
-              </figure>
-            </Reveal>
-          ))}
+      </div>
+      <div className="mt-14 space-y-5 pb-24 md:pb-32 marquee-mask">
+        <div className="marquee-track">
+          {rowA.map((v, i) => <Quote key={`a-${i}`} v={v} />)}
+        </div>
+        <div className="marquee-track reverse">
+          {rowB.map((v, i) => <Quote key={`b-${i}`} v={v} />)}
         </div>
       </div>
     </section>
