@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as VerifyEmailRouteImport } from './routes/verify-email'
+import { Route as TrackRecordRouteImport } from './routes/track-record'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as SignupRouteImport } from './routes/signup'
 import { Route as RiskDisclaimerRouteImport } from './routes/risk-disclaimer'
@@ -17,20 +18,33 @@ import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as PammRouteImport } from './routes/pamm'
 import { Route as OnboardingRouteImport } from './routes/onboarding'
+import { Route as NotificationsRouteImport } from './routes/notifications'
 import { Route as LoginRouteImport } from './routes/login'
+import { Route as InsightsRouteImport } from './routes/insights'
 import { Route as ForgotPasswordRouteImport } from './routes/forgot-password'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as EaLicensingRouteImport } from './routes/ea-licensing'
 import { Route as DocumentationRouteImport } from './routes/documentation'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as ConnectBrokerRouteImport } from './routes/connect-broker'
+import { Route as CheckoutSuccessRouteImport } from './routes/checkout-success'
+import { Route as CheckoutRouteImport } from './routes/checkout'
 import { Route as AuthCallbackRouteImport } from './routes/auth-callback'
+import { Route as AffiliateRouteImport } from './routes/affiliate'
 import { Route as AdminRouteImport } from './routes/admin'
+import { Route as ActivateLicenseRouteImport } from './routes/activate-license'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as InsightsSlugRouteImport } from './routes/insights.$slug'
 
 const VerifyEmailRoute = VerifyEmailRouteImport.update({
   id: '/verify-email',
   path: '/verify-email',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TrackRecordRoute = TrackRecordRouteImport.update({
+  id: '/track-record',
+  path: '/track-record',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TermsRoute = TermsRouteImport.update({
@@ -68,9 +82,19 @@ const OnboardingRoute = OnboardingRouteImport.update({
   path: '/onboarding',
   getParentRoute: () => rootRouteImport,
 } as any)
+const NotificationsRoute = NotificationsRouteImport.update({
+  id: '/notifications',
+  path: '/notifications',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LoginRoute = LoginRouteImport.update({
   id: '/login',
   path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InsightsRoute = InsightsRouteImport.update({
+  id: '/insights',
+  path: '/insights',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ForgotPasswordRoute = ForgotPasswordRouteImport.update({
@@ -103,9 +127,29 @@ const ContactRoute = ContactRouteImport.update({
   path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ConnectBrokerRoute = ConnectBrokerRouteImport.update({
+  id: '/connect-broker',
+  path: '/connect-broker',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CheckoutSuccessRoute = CheckoutSuccessRouteImport.update({
+  id: '/checkout-success',
+  path: '/checkout-success',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CheckoutRoute = CheckoutRouteImport.update({
+  id: '/checkout',
+  path: '/checkout',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AuthCallbackRoute = AuthCallbackRouteImport.update({
   id: '/auth-callback',
   path: '/auth-callback',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AffiliateRoute = AffiliateRouteImport.update({
+  id: '/affiliate',
+  path: '/affiliate',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AdminRoute = AdminRouteImport.update({
@@ -113,23 +157,40 @@ const AdminRoute = AdminRouteImport.update({
   path: '/admin',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ActivateLicenseRoute = ActivateLicenseRouteImport.update({
+  id: '/activate-license',
+  path: '/activate-license',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const InsightsSlugRoute = InsightsSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => InsightsRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/activate-license': typeof ActivateLicenseRoute
   '/admin': typeof AdminRoute
+  '/affiliate': typeof AffiliateRoute
   '/auth-callback': typeof AuthCallbackRoute
+  '/checkout': typeof CheckoutRoute
+  '/checkout-success': typeof CheckoutSuccessRoute
+  '/connect-broker': typeof ConnectBrokerRoute
   '/contact': typeof ContactRoute
   '/dashboard': typeof DashboardRoute
   '/documentation': typeof DocumentationRoute
   '/ea-licensing': typeof EaLicensingRoute
   '/faq': typeof FaqRoute
   '/forgot-password': typeof ForgotPasswordRoute
+  '/insights': typeof InsightsRouteWithChildren
   '/login': typeof LoginRoute
+  '/notifications': typeof NotificationsRoute
   '/onboarding': typeof OnboardingRoute
   '/pamm': typeof PammRoute
   '/pricing': typeof PricingRoute
@@ -137,19 +198,28 @@ export interface FileRoutesByFullPath {
   '/risk-disclaimer': typeof RiskDisclaimerRoute
   '/signup': typeof SignupRoute
   '/terms': typeof TermsRoute
+  '/track-record': typeof TrackRecordRoute
   '/verify-email': typeof VerifyEmailRoute
+  '/insights/$slug': typeof InsightsSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/activate-license': typeof ActivateLicenseRoute
   '/admin': typeof AdminRoute
+  '/affiliate': typeof AffiliateRoute
   '/auth-callback': typeof AuthCallbackRoute
+  '/checkout': typeof CheckoutRoute
+  '/checkout-success': typeof CheckoutSuccessRoute
+  '/connect-broker': typeof ConnectBrokerRoute
   '/contact': typeof ContactRoute
   '/dashboard': typeof DashboardRoute
   '/documentation': typeof DocumentationRoute
   '/ea-licensing': typeof EaLicensingRoute
   '/faq': typeof FaqRoute
   '/forgot-password': typeof ForgotPasswordRoute
+  '/insights': typeof InsightsRouteWithChildren
   '/login': typeof LoginRoute
+  '/notifications': typeof NotificationsRoute
   '/onboarding': typeof OnboardingRoute
   '/pamm': typeof PammRoute
   '/pricing': typeof PricingRoute
@@ -157,20 +227,29 @@ export interface FileRoutesByTo {
   '/risk-disclaimer': typeof RiskDisclaimerRoute
   '/signup': typeof SignupRoute
   '/terms': typeof TermsRoute
+  '/track-record': typeof TrackRecordRoute
   '/verify-email': typeof VerifyEmailRoute
+  '/insights/$slug': typeof InsightsSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/activate-license': typeof ActivateLicenseRoute
   '/admin': typeof AdminRoute
+  '/affiliate': typeof AffiliateRoute
   '/auth-callback': typeof AuthCallbackRoute
+  '/checkout': typeof CheckoutRoute
+  '/checkout-success': typeof CheckoutSuccessRoute
+  '/connect-broker': typeof ConnectBrokerRoute
   '/contact': typeof ContactRoute
   '/dashboard': typeof DashboardRoute
   '/documentation': typeof DocumentationRoute
   '/ea-licensing': typeof EaLicensingRoute
   '/faq': typeof FaqRoute
   '/forgot-password': typeof ForgotPasswordRoute
+  '/insights': typeof InsightsRouteWithChildren
   '/login': typeof LoginRoute
+  '/notifications': typeof NotificationsRoute
   '/onboarding': typeof OnboardingRoute
   '/pamm': typeof PammRoute
   '/pricing': typeof PricingRoute
@@ -178,21 +257,30 @@ export interface FileRoutesById {
   '/risk-disclaimer': typeof RiskDisclaimerRoute
   '/signup': typeof SignupRoute
   '/terms': typeof TermsRoute
+  '/track-record': typeof TrackRecordRoute
   '/verify-email': typeof VerifyEmailRoute
+  '/insights/$slug': typeof InsightsSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/activate-license'
     | '/admin'
+    | '/affiliate'
     | '/auth-callback'
+    | '/checkout'
+    | '/checkout-success'
+    | '/connect-broker'
     | '/contact'
     | '/dashboard'
     | '/documentation'
     | '/ea-licensing'
     | '/faq'
     | '/forgot-password'
+    | '/insights'
     | '/login'
+    | '/notifications'
     | '/onboarding'
     | '/pamm'
     | '/pricing'
@@ -200,19 +288,28 @@ export interface FileRouteTypes {
     | '/risk-disclaimer'
     | '/signup'
     | '/terms'
+    | '/track-record'
     | '/verify-email'
+    | '/insights/$slug'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/activate-license'
     | '/admin'
+    | '/affiliate'
     | '/auth-callback'
+    | '/checkout'
+    | '/checkout-success'
+    | '/connect-broker'
     | '/contact'
     | '/dashboard'
     | '/documentation'
     | '/ea-licensing'
     | '/faq'
     | '/forgot-password'
+    | '/insights'
     | '/login'
+    | '/notifications'
     | '/onboarding'
     | '/pamm'
     | '/pricing'
@@ -220,19 +317,28 @@ export interface FileRouteTypes {
     | '/risk-disclaimer'
     | '/signup'
     | '/terms'
+    | '/track-record'
     | '/verify-email'
+    | '/insights/$slug'
   id:
     | '__root__'
     | '/'
+    | '/activate-license'
     | '/admin'
+    | '/affiliate'
     | '/auth-callback'
+    | '/checkout'
+    | '/checkout-success'
+    | '/connect-broker'
     | '/contact'
     | '/dashboard'
     | '/documentation'
     | '/ea-licensing'
     | '/faq'
     | '/forgot-password'
+    | '/insights'
     | '/login'
+    | '/notifications'
     | '/onboarding'
     | '/pamm'
     | '/pricing'
@@ -240,20 +346,29 @@ export interface FileRouteTypes {
     | '/risk-disclaimer'
     | '/signup'
     | '/terms'
+    | '/track-record'
     | '/verify-email'
+    | '/insights/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ActivateLicenseRoute: typeof ActivateLicenseRoute
   AdminRoute: typeof AdminRoute
+  AffiliateRoute: typeof AffiliateRoute
   AuthCallbackRoute: typeof AuthCallbackRoute
+  CheckoutRoute: typeof CheckoutRoute
+  CheckoutSuccessRoute: typeof CheckoutSuccessRoute
+  ConnectBrokerRoute: typeof ConnectBrokerRoute
   ContactRoute: typeof ContactRoute
   DashboardRoute: typeof DashboardRoute
   DocumentationRoute: typeof DocumentationRoute
   EaLicensingRoute: typeof EaLicensingRoute
   FaqRoute: typeof FaqRoute
   ForgotPasswordRoute: typeof ForgotPasswordRoute
+  InsightsRoute: typeof InsightsRouteWithChildren
   LoginRoute: typeof LoginRoute
+  NotificationsRoute: typeof NotificationsRoute
   OnboardingRoute: typeof OnboardingRoute
   PammRoute: typeof PammRoute
   PricingRoute: typeof PricingRoute
@@ -261,6 +376,7 @@ export interface RootRouteChildren {
   RiskDisclaimerRoute: typeof RiskDisclaimerRoute
   SignupRoute: typeof SignupRoute
   TermsRoute: typeof TermsRoute
+  TrackRecordRoute: typeof TrackRecordRoute
   VerifyEmailRoute: typeof VerifyEmailRoute
 }
 
@@ -271,6 +387,13 @@ declare module '@tanstack/react-router' {
       path: '/verify-email'
       fullPath: '/verify-email'
       preLoaderRoute: typeof VerifyEmailRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/track-record': {
+      id: '/track-record'
+      path: '/track-record'
+      fullPath: '/track-record'
+      preLoaderRoute: typeof TrackRecordRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/terms': {
@@ -322,11 +445,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof OnboardingRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/notifications': {
+      id: '/notifications'
+      path: '/notifications'
+      fullPath: '/notifications'
+      preLoaderRoute: typeof NotificationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/login': {
       id: '/login'
       path: '/login'
       fullPath: '/login'
       preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/insights': {
+      id: '/insights'
+      path: '/insights'
+      fullPath: '/insights'
+      preLoaderRoute: typeof InsightsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/forgot-password': {
@@ -371,11 +508,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/connect-broker': {
+      id: '/connect-broker'
+      path: '/connect-broker'
+      fullPath: '/connect-broker'
+      preLoaderRoute: typeof ConnectBrokerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/checkout-success': {
+      id: '/checkout-success'
+      path: '/checkout-success'
+      fullPath: '/checkout-success'
+      preLoaderRoute: typeof CheckoutSuccessRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/checkout': {
+      id: '/checkout'
+      path: '/checkout'
+      fullPath: '/checkout'
+      preLoaderRoute: typeof CheckoutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/auth-callback': {
       id: '/auth-callback'
       path: '/auth-callback'
       fullPath: '/auth-callback'
       preLoaderRoute: typeof AuthCallbackRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/affiliate': {
+      id: '/affiliate'
+      path: '/affiliate'
+      fullPath: '/affiliate'
+      preLoaderRoute: typeof AffiliateRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/admin': {
@@ -385,6 +550,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/activate-license': {
+      id: '/activate-license'
+      path: '/activate-license'
+      fullPath: '/activate-license'
+      preLoaderRoute: typeof ActivateLicenseRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -392,20 +564,46 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/insights/$slug': {
+      id: '/insights/$slug'
+      path: '/$slug'
+      fullPath: '/insights/$slug'
+      preLoaderRoute: typeof InsightsSlugRouteImport
+      parentRoute: typeof InsightsRoute
+    }
   }
 }
 
+interface InsightsRouteChildren {
+  InsightsSlugRoute: typeof InsightsSlugRoute
+}
+
+const InsightsRouteChildren: InsightsRouteChildren = {
+  InsightsSlugRoute: InsightsSlugRoute,
+}
+
+const InsightsRouteWithChildren = InsightsRoute._addFileChildren(
+  InsightsRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ActivateLicenseRoute: ActivateLicenseRoute,
   AdminRoute: AdminRoute,
+  AffiliateRoute: AffiliateRoute,
   AuthCallbackRoute: AuthCallbackRoute,
+  CheckoutRoute: CheckoutRoute,
+  CheckoutSuccessRoute: CheckoutSuccessRoute,
+  ConnectBrokerRoute: ConnectBrokerRoute,
   ContactRoute: ContactRoute,
   DashboardRoute: DashboardRoute,
   DocumentationRoute: DocumentationRoute,
   EaLicensingRoute: EaLicensingRoute,
   FaqRoute: FaqRoute,
   ForgotPasswordRoute: ForgotPasswordRoute,
+  InsightsRoute: InsightsRouteWithChildren,
   LoginRoute: LoginRoute,
+  NotificationsRoute: NotificationsRoute,
   OnboardingRoute: OnboardingRoute,
   PammRoute: PammRoute,
   PricingRoute: PricingRoute,
@@ -413,6 +611,7 @@ const rootRouteChildren: RootRouteChildren = {
   RiskDisclaimerRoute: RiskDisclaimerRoute,
   SignupRoute: SignupRoute,
   TermsRoute: TermsRoute,
+  TrackRecordRoute: TrackRecordRoute,
   VerifyEmailRoute: VerifyEmailRoute,
 }
 export const routeTree = rootRouteImport

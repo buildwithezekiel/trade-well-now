@@ -7,19 +7,22 @@ const product = [
   { to: "/ea-licensing", label: "EA Licensing" },
   { to: "/pamm", label: "PAMM Module" },
   { to: "/pricing", label: "Pricing" },
-  { to: "/dashboard", label: "Dashboard" },
-  { to: "/onboarding", label: "EA Onboarding" },
+  { to: "/track-record", label: "Track record" },
+  { to: "/insights", label: "Insights" },
 ];
 const support = [
   { to: "/documentation", label: "Documentation" },
   { to: "/faq", label: "FAQ" },
   { to: "/contact", label: "Contact" },
+  { to: "/connect-broker", label: "Connect broker" },
+  { to: "/activate-license", label: "Activate license" },
 ];
 const account = [
   { to: "/login", label: "Login" },
   { to: "/signup", label: "Sign up" },
-  { to: "/forgot-password", label: "Forgot password" },
-  { to: "/verify-email", label: "Verify email" },
+  { to: "/dashboard", label: "Dashboard" },
+  { to: "/notifications", label: "Notifications" },
+  { to: "/affiliate", label: "Affiliate" },
   { to: "/admin", label: "Admin" },
 ];
 const legal = [
