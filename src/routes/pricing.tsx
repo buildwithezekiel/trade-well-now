@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageShell, Section } from "@/components/site/PageShell";
 
 export const Route = createFileRoute("/pricing")({
@@ -37,6 +37,7 @@ function Pricing() {
                 <th className="text-left p-3 font-semibold">Accounts</th>
                 <th className="text-left p-3 font-semibold">Balance cap</th>
                 <th className="text-left p-3 font-semibold">Best for</th>
+                <th className="text-left p-3 font-semibold"></th>
               </tr>
             </thead>
             <tbody className="text-muted-foreground">
@@ -47,6 +48,9 @@ function Pricing() {
                   <td className="p-3">{t.accounts}</td>
                   <td className="p-3">{t.cap}</td>
                   <td className="p-3">{t.best}</td>
+                  <td className="p-3">
+                    <Link to="/checkout" search={{ plan: t.name.toLowerCase() }} className="inline-flex items-center rounded-full bg-foreground px-3 py-1.5 text-xs font-medium text-background hover:bg-foreground/90">Choose</Link>
+                  </td>
                 </tr>
               ))}
             </tbody>
