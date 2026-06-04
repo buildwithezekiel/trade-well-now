@@ -32,15 +32,15 @@ function Sparkline({ data }: { data: number[] }) {
   }).join(" ");
   const area = `${path} L${w},${h} L0,${h} Z`;
   return (
-    <svg viewBox={`0 0 ${w} ${h}`} className="w-full h-48">
+    <svg viewBox={`0 0 ${w} ${h}`} className="w-full h-48 text-brand">
       <defs>
         <linearGradient id="g" x1="0" x2="0" y1="0" y2="1">
-          <stop offset="0%" stopColor="hsl(var(--brand))" stopOpacity="0.35" />
-          <stop offset="100%" stopColor="hsl(var(--brand))" stopOpacity="0" />
+          <stop offset="0%" stopColor="currentColor" stopOpacity="0.35" />
+          <stop offset="100%" stopColor="currentColor" stopOpacity="0" />
         </linearGradient>
       </defs>
       <path d={area} fill="url(#g)" />
-      <path d={path} fill="none" stroke="hsl(var(--brand))" strokeWidth="2" />
+      <path d={path} fill="none" stroke="currentColor" strokeWidth="2" />
     </svg>
   );
 }
