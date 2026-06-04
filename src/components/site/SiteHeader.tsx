@@ -34,11 +34,10 @@ export function SiteHeader() {
   }, [open]);
 
   return (
+    <>
     <header className="sticky top-0 z-50 border-b border-border/70 bg-background/85 backdrop-blur-md">
       <nav className="mx-auto flex h-16 max-w-[1440px] items-center gap-6 px-5 md:px-8 lg:px-10">
-        <Link to="/" className="shrink-0">
-          <Logo className="h-7 md:h-8 w-auto" />
-        </Link>
+        <Logo className="h-7 md:h-8 w-auto" />
 
         {/* Desktop nav — center */}
         <div className="hidden md:flex flex-1 items-center justify-center gap-1">
@@ -89,47 +88,68 @@ export function SiteHeader() {
         </div>
       </nav>
 
-      {/* Mobile drawer */}
-      {open && (
-        <div className="md:hidden fixed inset-x-0 top-16 bottom-0 z-50 bg-background animate-fade-in">
-          <div className="mx-auto max-w-[1440px] px-5 py-6 flex flex-col h-full overflow-y-auto">
-            <ul className="flex flex-col gap-1">
-              {navLinks.map((l) => (
-                <li key={l.to}>
-                  <Link
-                    to={l.to}
-                    activeOptions={{ exact: l.to === "/" }}
-                    className="block rounded-xl px-4 py-3 text-base text-foreground hover:bg-secondary transition-colors data-[status=active]:bg-brand-soft data-[status=active]:text-brand data-[status=active]:font-medium"
-                  >
-                    {l.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-            <div className="mt-6 grid grid-cols-2 gap-3">
-              <Link
-                to="/login"
-                className="inline-flex items-center justify-center rounded-full border border-border bg-background px-5 py-3 text-sm font-medium hover:bg-secondary transition-colors"
-              >
-                Login
-              </Link>
-              <Link
-                to="/signup"
-                className="inline-flex items-center justify-center rounded-full bg-foreground px-5 py-3 text-sm font-medium text-background hover:bg-foreground/90 transition-colors"
-              >
-                Get started
-              </Link>
+    </header>
+    {open && (
+      <div className="fixed inset-0 z-[100] md:hidden bg-background text-foreground animate-fade-in">
+        <div className="flex min-h-screen flex-col overflow-y-auto px-5 pb-8">
+          <div className="flex h-16 shrink-0 items-center justify-between border-b border-border/70">
+            <Logo className="h-7 w-auto" />
+            <button
+              type="button"
+              onClick={() => setOpen(false)}
+              aria-label="Close menu"
+              className="inline-flex items-center justify-center rounded-full border border-border bg-background p-2 text-foreground hover:bg-secondary transition-colors"
+            >
+              <X className="size-5" />
+            </button>
+          </div>
+
+          <div className="flex flex-1 flex-col justify-between py-8">
+            <div>
+              <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-brand">Menu</p>
+              <ul className="mt-5 flex flex-col gap-2">
+                {navLinks.map((l) => (
+                  <li key={l.to}>
+                    <Link
+                      to={l.to}
+                      activeOptions={{ exact: l.to === "/" }}
+                      className="flex items-center justify-between rounded-2xl border border-border bg-card px-5 py-4 font-display text-2xl leading-none text-foreground transition-colors hover:bg-secondary data-[status=active]:border-brand/40 data-[status=active]:bg-brand-soft data-[status=active]:text-brand"
+                    >
+                      {l.label}
+                      <ArrowUpRight className="size-4" />
+                    </Link>
+                  </li>
+                ))}
+              </ul>
             </div>
-            <p className="mt-8 text-[11px] uppercase tracking-[0.22em] text-muted-foreground">Account</p>
-            <ul className="mt-3 flex flex-col gap-1">
-              <li><Link to="/dashboard" className="block rounded-xl px-4 py-3 text-sm text-foreground hover:bg-secondary">Dashboard</Link></li>
-              <li><Link to="/onboarding" className="block rounded-xl px-4 py-3 text-sm text-foreground hover:bg-secondary">EA Onboarding</Link></li>
-              <li><Link to="/admin" className="block rounded-xl px-4 py-3 text-sm text-foreground hover:bg-secondary">Admin</Link></li>
-              <li><Link to="/forgot-password" className="block rounded-xl px-4 py-3 text-sm text-foreground hover:bg-secondary">Forgot password</Link></li>
-            </ul>
+
+            <div className="mt-8">
+              <div className="grid grid-cols-2 gap-3">
+                <Link
+                  to="/login"
+                  className="inline-flex items-center justify-center rounded-full border border-border bg-background px-5 py-3 text-sm font-medium hover:bg-secondary transition-colors"
+                >
+                  Login
+                </Link>
+                <Link
+                  to="/signup"
+                  className="inline-flex items-center justify-center rounded-full bg-foreground px-5 py-3 text-sm font-medium text-background hover:bg-foreground/90 transition-colors"
+                >
+                  Get started
+                </Link>
+              </div>
+              <p className="mt-7 text-[11px] font-medium uppercase tracking-[0.22em] text-muted-foreground">Account</p>
+              <ul className="mt-3 grid grid-cols-2 gap-2">
+                <li><Link to="/dashboard" className="block rounded-xl bg-secondary px-4 py-3 text-sm text-foreground hover:text-brand transition-colors">Dashboard</Link></li>
+                <li><Link to="/onboarding" className="block rounded-xl bg-secondary px-4 py-3 text-sm text-foreground hover:text-brand transition-colors">EA Onboarding</Link></li>
+                <li><Link to="/admin" className="block rounded-xl bg-secondary px-4 py-3 text-sm text-foreground hover:text-brand transition-colors">Admin</Link></li>
+                <li><Link to="/forgot-password" className="block rounded-xl bg-secondary px-4 py-3 text-sm text-foreground hover:text-brand transition-colors">Forgot password</Link></li>
+              </ul>
+            </div>
           </div>
         </div>
-      )}
-    </header>
+      </div>
+    )}
+    </>
   );
 }
